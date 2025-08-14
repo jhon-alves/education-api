@@ -13,7 +13,7 @@ export const createCourseRoute: FastifyPluginAsyncZod = async (server) => {
         description: z.string().min(1, 'Descrição é obrigatória'),
       }),
       response: {
-        201: z.object({ courseId: z.uuid() }),
+        201: z.object({ courseId: z.uuid() }).describe('Curso criado com sucesso!'),
         404: z.null().describe('Ocorreu um erro não previsto!'),
       }
     },

@@ -19,12 +19,12 @@ export const getCourseByIdRoute: FastifyPluginAsyncZod = async (server) => {
       },
     },
   }, async (request, reply) => {
-    const courseId = request.params.id
+    const { id } = request.params;
   
     const result = await db
       .select()
       .from(courses)
-      .where(eq(courses.id, courseId))
+      .where(eq(courses.id, id))
   
     if (result.length > 0) {
       return { course: result[0] }
